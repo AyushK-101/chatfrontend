@@ -57,7 +57,7 @@ export default function RegisterAndLoginForm() {
           {isLoginOrRegister === 'register' && (
             <div>
               Already a member?
-              <button className="ml-1" onClick={() => setIsLoginOrRegister('login')}>
+              <button className="ml-1 text-blue-500" onClick={() => setIsLoginOrRegister('login')}>
                 Login here
               </button>
             </div>
@@ -65,7 +65,7 @@ export default function RegisterAndLoginForm() {
           {isLoginOrRegister === 'login' && (
             <div>
               Dont have an account?
-              <button className="ml-1" onClick={() => setIsLoginOrRegister('register')}>
+              <button className="ml-1 text-blue-500" onClick={() => setIsLoginOrRegister('register')}>
                 Register
               </button>
             </div>
