@@ -10,13 +10,30 @@ export default function RegisterAndLoginForm() {
 
   const {setUsername: setLoggedInUsername, setId} = useContext(UserContext);
 
-  async function register(ev) {
-     ev.preventDefault();
-     const url = isLoginOrRegister === 'register' ? 'register' : 'login';
-     const {data} = await axios.post(url, {username,password});
-     setLoggedInUsername(username);
-     setId(data.id);
+  // async function register(ev) {
+  //    ev.preventDefault();
+  //    const url = isLoginOrRegister === 'register' ? 'register' : 'login';
+  //    const {data} = await axios.post(url, {username,password});
+  //    setLoggedInUsername(username);
+  //    setId(data.id);
      
+  // }
+
+  async function register(ev) {
+    ev.preventDefault();
+    const url = isLoginOrRegister === 'register' ? 'register' : 'login';
+    try {
+      const { data } = await axios.post(url, { username, password });
+      setLoggedInUsername(username);
+      setId(data.id);
+    } catch (error) {
+      if (error.response && error.response.data) {
+        const errorMessage = error.response.data;
+        alert(errorMessage);
+      } else {
+        alert('An error occurred. Please try again.');
+      }
+    }
   }
 
   return(
